@@ -2,10 +2,6 @@ function loadCSS(filename) {
     const link = document.getElementById('theme-stylesheet');
     link.href = filename;
 }
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM fully loaded and parsed");
-    loadHTML("theme1"); // Load the first theme as default
-});
 
 function loadHTML(theme) {
     const container = document.getElementById('theme-container');
