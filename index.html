@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Valentine's Day Project</title>
+    <link id="theme-stylesheet" rel="stylesheet" href="">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: flex-start; /* Align items to the top */
+            margin: 0;
+            font-family: Arial, sans-serif; /* Optional: Set a default font */
+            /* Optional: Background color */
+            padding: 20px; /* Optional: Padding around the body */
+        }
+
+        .button-container {
+            margin-bottom: 20px; /* Space between buttons and other content */
+        }
+
+        button {
+            margin: 0 10px; /* Space between buttons */
+            padding: 10px 15px; /* Button padding */
+            font-size: 16px; /* Button font size */
+            cursor: pointer; /* Cursor style */
+        }
+
+        h1, p {
+            text-align: center; /* Center-align text */
+        }
+    </style>
 </head>
 <body>
-    
+
+    <div class="button-container" style="display: flex; justify-content: center">
+        <button onclick="loadCSS('valentines.css'); loadHTML('theme1');">Theme 1</button>
+        <button onclick="loadCSS('valentines2.css'); loadHTML('theme2');">Theme 2</button>
+        <button onclick="loadCSS('valentines3.css'); loadHTML('theme3');">Theme 3</button>
+    </div>
+
+    <h1>Happy Valentine's Day!</h1>
+    <p>Choose a theme to style this page!</p>
+
+    <!-- Container for dynamic HTML content -->
+    <div id="theme-container"></div>
+
+    <script src="script.js">
+        
+    </script>
 </body>
 </html>
