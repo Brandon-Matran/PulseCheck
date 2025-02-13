@@ -5,6 +5,7 @@ function loadCSS(filename) {
 
 function loadHTML(theme) {
     const container = document.getElementById('theme-container');
+    const userName = localStorage.getItem("userName") || "Valentine"
     
     if (theme === 'theme1') {
         container.innerHTML = `
@@ -33,7 +34,7 @@ function loadHTML(theme) {
                             <div class="right-side"></div>
                         </div>
                     </div>
-                    <div class="text"><span>Happy Valentine's<br> Day!</span></div>
+                    <div class="text"><span>Happy Valentine's<br> Day ${userName}!</span></div>
                 </div>
                 <p class="hover">- hover over the text -</p>
             </div>
@@ -46,7 +47,7 @@ function loadHTML(theme) {
                         <div class="envelope"></div>
                         <div class="front"></div>
                         <div class="card">
-                            <div class="text">Happy</br> Valentine's</br> Day!</div>
+                            <div class="text">Happy</br> Valentine's</br> Day ${userName}!</div>
                             <div class="heart"></div>
                         </div>
                         <div class="hearts">
@@ -83,7 +84,7 @@ function loadHTML(theme) {
           
             <div class="wrapper">
                 <div class="content">
-                    <button class="heart">SPREAD LOVE</button>
+                    <button class="heart">SPREAD THE LOVE ${userName}!</button>
                 </div>
             </div>
         `;

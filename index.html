@@ -9,19 +9,18 @@
         body {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center items horizontally */
-            justify-content: flex-start; /* Align items to the top */
+            align-items: center;
+            justify-content: flex-start;
             margin: 0;
-            font-family: Arial, sans-serif; /* Optional: Set a default font */
-            /* Optional: Background color */
-            padding: 20px; /* Optional: Padding around the body */
+            font-family: Arial, sans-serif;
+            padding: 20px;
             overflow: hidden;
         }
 
         .button-container {
             display: flex;
             justify-content: center;
-            gap: 20px; /* Adjust spacing between heart buttons */
+            gap: 20px;
             margin-bottom: 20px;
             padding: 10px;
             
@@ -39,9 +38,9 @@
             position: relative;
             transform: rotate(-315deg);
             display: inline-block;
-            margin-right: 20px; /* Ensure spacing */
+            margin-right: 20px;
         }
-        
+
         /* Heart Shape */
         .heart-button,
         .heart-button::before,
@@ -49,8 +48,7 @@
             background-color: lightpink;
             display: block;
         }
-        
-        /* Create two circular parts of the heart */
+
         .heart-button::before,
         .heart-button::after {
             content: "";
@@ -59,71 +57,115 @@
             height: 60px;
             border-radius: 50%;
         }
-        
-        /* Position the circles for top rounded heart */
+
         .heart-button::before {
             top: -30px;
             left: 0;
         }
-        
+
         .heart-button::after {
             left: -30px;
             top: 0;
         }
-        
-/* Text inside heart */
-.heart-button span {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    padding-bottom: 10px;
-    width: 100%; /* Make it fit the heart */
-    height: 100%; /* Ensure it covers the heart */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(315deg) translate(5px, -5px); /* Adjust to center */
-    font-size: 14px; /* Make it more readable */
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    line-height: 1;
-    z-index: 9999;
-}
-/* Heart Button Hover Animation */
-@keyframes heartBeat {
-    0% {
-        transform: rotate(-315deg) scale(1);
-    }
-    50% {
-        transform: rotate(-315deg) scale(1.15); /* Increase size by 15% */
-    }
-    100% {
-        transform: rotate(-315deg) scale(1);
-    }
-}
 
-/* Apply animation only on hover */
-.heart-button:hover {
-    animation: heartBeat 0.6s ease-in-out infinite;
-}
-
-
-        /* Hover effect */
-        .heart-button:hover {
-            opacity: 0.8;
-    
+        /* Text inside heart */
+        .heart-button span {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(315deg) translate(5px, -5px);
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            z-index: 9999;
         }
+
+        /* Heart Button Hover Animation */
+        @keyframes heartBeat {
+            0% {
+                transform: rotate(-315deg) scale(1);
+            }
+            50% {
+                transform: rotate(-315deg) scale(1.15); /* Increase size by 15% */
+            }
+            100% {
+                transform: rotate(-315deg) scale(1);
+            }
+        }
+
+        /* Apply animation only on hover */
+        .heart-button:hover {
+            animation: heartBeat 0.6s ease-in-out infinite;
+        }
+
         h1, p {
-            text-align: center; /* Center-align text */
+            text-align: center;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .modal input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: lightpink;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .modal button:hover {
+            background-color: #ff4d6d;
         }
     </style>
 </head>
 <body>
-
-    <div class="button-container" style="display: flex; justify-content: center">
+    <!-- Name Modal -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2>Enter Your Name</h2>
+            <input type="text" id="userName" placeholder="Your Name">
+            <button onclick="saveName()">Submit</button>
+        </div>
+    </div>
+  
+    <div class="button-container">
         <button class="heart-button" onclick="loadCSS('valentines.css'); loadHTML('theme1');">
             <span>Theme 1</span>
         </button>
@@ -135,14 +177,33 @@
         </button>
     </div>
 
-    <h1>Happy Valentine's Day!</h1>
-    <p>Choose a theme to style this page!</p>
+    <h1 id="greeting">Happy Valentine's Day!</h1>
+    <p>Go ahead, click a heart!</p>
 
     <!-- Container for dynamic HTML content -->
     <div id="theme-container"></div>
 
-    <script src="script.js">
+    <script>
+        window.onload = function() {
+            const savedName = localStorage.getItem("userName");
+        
+            document.getElementById("nameModal").style.display = "flex"; // Always show modal on refresh
+        
+            if (savedName) {
+                document.getElementById("userName").value = savedName; // Pre-fill with last entered name
+            }
+        };
+        
+        function saveName() {
+            const name = document.getElementById("userName").value.trim();
+            if (name) {
+                localStorage.setItem("userName", name); // Store name in localStorage
+                document.getElementById("greeting").innerText = `Happy Valentine's Day, ${name}!`;
+                document.getElementById("nameModal").style.display = "none"; // Hide modal after submission
+            }
+        }
         
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
