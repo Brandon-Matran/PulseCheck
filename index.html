@@ -184,24 +184,30 @@
     <div id="theme-container"></div>
 
     <script>
-        window.onload = function() {
-            const savedName = localStorage.getItem("userName");
+        document.addEventListener("DOMContentLoaded", function () {
+            const savedName = localStorage.getItem("userName") || "Valentine";
+        
+            console.log("Saved Name from localStorage:", savedName); // Debugging log
         
             document.getElementById("nameModal").style.display = "flex"; // Always show modal on refresh
         
             if (savedName) {
                 document.getElementById("userName").value = savedName; // Pre-fill with last entered name
             }
-        };
+        
+            document.getElementById("greeting").innerText = `Happy Valentine's Day, ${savedName}!`;
+        });
         
         function saveName() {
             const name = document.getElementById("userName").value.trim();
             if (name) {
                 localStorage.setItem("userName", name); // Store name in localStorage
+                console.log("Stored Name in localStorage:", name); // Debugging log
                 document.getElementById("greeting").innerText = `Happy Valentine's Day, ${name}!`;
                 document.getElementById("nameModal").style.display = "none"; // Hide modal after submission
             }
         }
+        
         
     </script>
     <script src="script.js"></script>
