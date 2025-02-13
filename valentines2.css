@@ -224,3 +224,8 @@
       transform: scaleX(0.85);
     }
   }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  

@@ -15,19 +15,107 @@
             font-family: Arial, sans-serif; /* Optional: Set a default font */
             /* Optional: Background color */
             padding: 20px; /* Optional: Padding around the body */
+            overflow: hidden;
         }
 
         .button-container {
-            margin-bottom: 20px; /* Space between buttons and other content */
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Adjust spacing between heart buttons */
+            margin-bottom: 20px;
+            padding: 10px;
+            
         }
-
-        button {
-            margin: 0 10px; /* Space between buttons */
-            padding: 10px 15px; /* Button padding */
-            font-size: 16px; /* Button font size */
-            cursor: pointer; /* Cursor style */
+        
+        /* Heart Button */
+        .heart-button {
+            background: transparent;
+            margin-left: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            transform: rotate(-315deg);
+            display: inline-block;
+            margin-right: 20px; /* Ensure spacing */
         }
+        
+        /* Heart Shape */
+        .heart-button,
+        .heart-button::before,
+        .heart-button::after {
+            background-color: lightpink;
+            display: block;
+        }
+        
+        /* Create two circular parts of the heart */
+        .heart-button::before,
+        .heart-button::after {
+            content: "";
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        
+        /* Position the circles for top rounded heart */
+        .heart-button::before {
+            top: -30px;
+            left: 0;
+        }
+        
+        .heart-button::after {
+            left: -30px;
+            top: 0;
+        }
+        
+/* Text inside heart */
+.heart-button span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-bottom: 10px;
+    width: 100%; /* Make it fit the heart */
+    height: 100%; /* Ensure it covers the heart */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(315deg) translate(5px, -5px); /* Adjust to center */
+    font-size: 14px; /* Make it more readable */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    line-height: 1;
+    z-index: 9999;
+}
+/* Heart Button Hover Animation */
+@keyframes heartBeat {
+    0% {
+        transform: rotate(-315deg) scale(1);
+    }
+    50% {
+        transform: rotate(-315deg) scale(1.15); /* Increase size by 15% */
+    }
+    100% {
+        transform: rotate(-315deg) scale(1);
+    }
+}
 
+/* Apply animation only on hover */
+.heart-button:hover {
+    animation: heartBeat 0.6s ease-in-out infinite;
+}
+
+
+        /* Hover effect */
+        .heart-button:hover {
+            opacity: 0.8;
+    
+        }
         h1, p {
             text-align: center; /* Center-align text */
         }
@@ -36,9 +124,15 @@
 <body>
 
     <div class="button-container" style="display: flex; justify-content: center">
-        <button onclick="loadCSS('valentines.css'); loadHTML('theme1');">Theme 1</button>
-        <button onclick="loadCSS('valentines2.css'); loadHTML('theme2');">Theme 2</button>
-        <button onclick="loadCSS('valentines3.css'); loadHTML('theme3');">Theme 3</button>
+        <button class="heart-button" onclick="loadCSS('valentines.css'); loadHTML('theme1');">
+            <span>Theme 1</span>
+        </button>
+        <button class="heart-button" onclick="loadCSS('valentines2.css'); loadHTML('theme2');">
+            <span>Theme 2</span>
+        </button>
+        <button class="heart-button" onclick="loadCSS('valentines3.css'); loadHTML('theme3');">
+            <span>Theme 3</span>
+        </button>
     </div>
 
     <h1>Happy Valentine's Day!</h1>
