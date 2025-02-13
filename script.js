@@ -7,9 +7,6 @@ function loadHTML(theme) {
     const container = document.getElementById('theme-container');
     const userName = localStorage.getItem("userName") || "Valentine"
     
-    console.log("Loading theme:", theme);
-    console.log("Username used in theme:", userName);
-
     if (theme === 'theme1') {
         container.innerHTML = `
             <div class="happy-valentines">
