@@ -205,7 +205,15 @@
                 console.log("Stored Name in localStorage:", name); // Debugging log
                 document.getElementById("greeting").innerText = `Happy Valentine's Day, ${name}!`;
                 document.getElementById("nameModal").style.display = "none"; // Hide modal after submission
+                
+                // ✅ Call `loadHTML()` again to update the name everywhere
+                refreshTheme();
             }
+        }
+        
+        function refreshTheme() {
+            const currentTheme = document.querySelector('.heart-button.active')?.getAttribute('data-theme') || 'theme1';
+            loadHTML(currentTheme);
         }
         
         
