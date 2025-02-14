@@ -2,8 +2,16 @@ function loadCSS(filename) {
     const link = document.getElementById('theme-stylesheet');
     link.href = filename;
 }
-
+function cleanupPreviousTheme() {
+    // Remove any dynamically added hearts from the body
+    const hearts = document.querySelectorAll('.hearts');
+    hearts.forEach(heart => heart.remove());
+    
+    // Reset any body styles if needed
+    document.body.style.position = '';
+}
 function loadHTML(theme) {
+    cleanupPreviousTheme();
     const container = document.getElementById('theme-container');
     const userName = localStorage.getItem("userName") || "Valentine"
     
