@@ -11,8 +11,8 @@ body {
 
   @media (max-width: 1920px) { 
     .gif-container img {
-        width: 50%;
-        margin-left: 25%;
+        width: 90%;
+        margin-left: 5%;
         height: 25vw;
     }
 }
