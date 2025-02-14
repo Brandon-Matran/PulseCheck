@@ -7,10 +7,10 @@ body {
     display: block;
 }
 
-@media (max-width: 1920px) { 
-   .image-container img {
-        max-width: 15vw;
-    }
+@media (max-device-width: 1920px) {
+  .image-container img {
+       max-width: 15vw;
+   }
 }
 
   .speech-bubble {
@@ -45,6 +45,7 @@ body {
         transform: translate(-50%, -50%);
         font-size: 12px; /* Slightly smaller text for mobile */
         padding: 8px 12px;
+        width: 75%;
     }
 
     .speech-bubble::after {
