@@ -209,9 +209,7 @@ function loadHTML(theme) {
   </div>
          <div class="image-container">  
                 <img src="https://ih1.redbubble.net/image.4146804179.0047/fposter,small,wall_texture,square_product,1000x1000.jpg" />
-                 <div class="speech-bubble">
-    Axe says - Happy Valentine's Day!
-  </div>
+              
             </div>
         `
     } else if (theme === 'theme6') {
