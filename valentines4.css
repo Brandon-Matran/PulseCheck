@@ -11,15 +11,14 @@ body {
 
   @media (max-width: 1920px) { 
     .gif-container img {
-        width: 90%;
-        margin-left: 5%;
-        height: 25vw;
+        width: 50%;
+        margin-left: 25%;
+     
     }
 }
 
 .gif-container img {
   max-width: 100%;
-  height: 25vw;
   display: block;
   object-fit: contain; /* Prevent cropping */
 }
