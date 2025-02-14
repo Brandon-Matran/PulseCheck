@@ -126,6 +126,13 @@
             transform: translateX(-50%);
             z-index: 1000; /* Make sure it stays on top */
           }
+          #veronicaButtonContainer {
+            position: fixed;
+            bottom: 20px;  /* Adjust spacing from the bottom as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000; /* Make sure it stays on top */
+          }
 
         /* Modal Styles */
         .modal {
@@ -214,6 +221,11 @@
             <span>Ahmed</span>
         </button>
     </div>
+    <div id="veronicaButtonContainer" style="display: none;">
+        <button class="heart-button" onclick="loadCSS('valentines6.css'); loadHTML('theme6');">
+            <span>Veronica</span>
+        </button>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const savedName = localStorage.getItem("userName") || "Valentine";
@@ -240,14 +252,17 @@
                 // Allowed names for Mark and Ahmed
                 const markNames = ["mark", "mark fung", "mark f"];
                 const ahmedNames = ["ahmed"];
+                const veronicaNames = ["veronica", "v"]
                 
                 // Get both containers
                 const markButtonContainer = document.getElementById("markButtonContainer");
                 const ahmedButtonContainer = document.getElementById("ahmedButtonContainer");
+                const veronicaButtonContainer = document.getElementById("veronicaButtonContainer");
                 
                 // Hide both by default
                 markButtonContainer.style.display = "none";
                 ahmedButtonContainer.style.display = "none";
+                veronicaButtonContainer.style.display = "none";
                 
                 // Check which button to show based on the entered name
                 const lowerName = name.toLowerCase();
@@ -257,11 +272,14 @@
                 } else if (ahmedNames.includes(lowerName)) {
                     ahmedButtonContainer.style.display = "block";
                     console.log("Ahmed button should be visible now.");
-                } else {
+                } else if (veronicaNames.includes(lowerName)) {
+                    veronicaButtonContainer.style.display = "block";
+                    console.log("Veronica button should be visible now.");
+                }
                     console.log("No special button for this name.");
                 }
             }
-        }
+        
         
    
         

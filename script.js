@@ -211,6 +211,10 @@ function loadHTML(theme) {
   </div>
             </div>
         `
+    } else if (theme === 'theme6') {
+        container.innerHTML = `<div class="ragrets-container">
+            <img src="https://media1.tenor.com/m/6fLNXlo5E3oAAAAd/noragrets-ragrets.gif" />
+            </div>`
     }}
     // Thanks to @neave
 
