@@ -19,6 +19,19 @@ body {
   box-shadow: 0 0 100px rgba(0,0,0,.4);
 }
 
+@media (max-width: 1920px) { 
+  .valentines-day-card {
+    position: relative;
+    width: 400px;
+    height: 250px;
+    background-color: #ff8fa3;
+    overflow: hidden;
+    border:10px solid white;
+    border-radius:10px;
+    box-shadow: 0 0 100px rgba(0,0,0,.4);
+  }
+}
+
 .valentines-day-card:before {
   content:"";
   position: absolute;
@@ -191,3 +204,4 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
