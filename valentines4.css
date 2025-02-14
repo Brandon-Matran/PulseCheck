@@ -1,0 +1,10 @@
+body {
+    background: white;
+}
+
+@media (max-width: 600px) {
+    #markButtonContainer .heart-button {
+      transform: scale(0.5);
+      transform-origin: center; /* keep the button centered while scaling */
+    }
+  }

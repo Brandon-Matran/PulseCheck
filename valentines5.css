@@ -1,0 +1,49 @@
+body {
+    background: white;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+  .speech-bubble {
+    position: absolute;
+    top: 40%;   /* Adjust the top offset as needed */
+    right: 40%; /* Adjust the right offset as needed */
+    background: white;
+    padding: 10px 15px;
+    border: 2px solid lightpink;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Create a little triangle for the bubble tail */
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;      /* Position it at the bottom of the bubble */
+    left: 10px;    /* Adjust so it appears near the right edge */
+    border-width: 10px;
+    border-style: solid;
+    border-color: lightpink transparent transparent transparent;
+  }
+  
+  @media (max-width: 600px) {
+    .speech-bubble {
+        top: 40%; /* Adjust to fit inside the face */
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        font-size: 12px; /* Slightly smaller text for mobile */
+        padding: 8px 12px;
+    }
+
+    .speech-bubble::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

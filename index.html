@@ -41,6 +41,10 @@
             margin-right: 20px;
         }
 
+        @media (max-width: 600px) {
+            .heart-button {}
+        }
+
         /* Heart Shape */
         .heart-button,
         .heart-button::before,
@@ -108,6 +112,20 @@
         h1, p {
             text-align: center;
         }
+        #markButtonContainer {
+            position: fixed;
+            bottom: 20px;  /* Adjust spacing from the bottom as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000; /* Make sure it stays on top */
+          }
+          #ahmedButtonContainer {
+            position: fixed;
+            bottom: 20px;  /* Adjust spacing from the bottom as needed */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000; /* Make sure it stays on top */
+          }
 
         /* Modal Styles */
         .modal {
@@ -154,6 +172,8 @@
         .modal button:hover {
             background-color: #ff4d6d;
         }
+
+ 
     </style>
 </head>
 <body>
@@ -176,6 +196,7 @@
         <button class="heart-button" onclick="loadCSS('valentines3.css'); loadHTML('theme3');">
             <span>Theme 3</span>
         </button>
+     
     </div>
 
     <h1 id="greeting">Happy Valentine's Day!</h1>
@@ -183,7 +204,16 @@
 
     <!-- Container for dynamic HTML content -->
     <div id="theme-container"></div>
-
+    <div id="markButtonContainer" style="display: none;">
+        <button class="heart-button" onclick="loadCSS('valentines4.css'); loadHTML('theme4');">
+            <span>Mark</span>
+        </button>
+    </div>
+    <div id="ahmedButtonContainer" style="display: none;">
+        <button class="heart-button" onclick="loadCSS('valentines5.css'); loadHTML('theme5');">
+            <span>Ahmed</span>
+        </button>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const savedName = localStorage.getItem("userName") || "Valentine";
@@ -203,12 +233,33 @@
             const name = document.getElementById("userName").value.trim();
             if (name) {
                 localStorage.setItem("userName", name); // Store name in localStorage
-                console.log("Stored Name in localStorage:", name); // Debugging log
                 document.getElementById("greeting").innerText = `Happy Valentine's Day, ${name}!`;
                 document.getElementById("nameModal").style.display = "none"; // Hide modal after submission
+                console.log("Stored Name in localStorage:", name);
                 
-                // ✅ Call `loadHTML()` again to update the name everywhere
-                refreshTheme();
+                // Allowed names for Mark and Ahmed
+                const markNames = ["mark", "mark fung", "mark f"];
+                const ahmedNames = ["ahmed"];
+                
+                // Get both containers
+                const markButtonContainer = document.getElementById("markButtonContainer");
+                const ahmedButtonContainer = document.getElementById("ahmedButtonContainer");
+                
+                // Hide both by default
+                markButtonContainer.style.display = "none";
+                ahmedButtonContainer.style.display = "none";
+                
+                // Check which button to show based on the entered name
+                const lowerName = name.toLowerCase();
+                if (markNames.includes(lowerName)) {
+                    markButtonContainer.style.display = "block";
+                    console.log("Mark button should be visible now.");
+                } else if (ahmedNames.includes(lowerName)) {
+                    ahmedButtonContainer.style.display = "block";
+                    console.log("Ahmed button should be visible now.");
+                } else {
+                    console.log("No special button for this name.");
+                }
             }
         }
         
